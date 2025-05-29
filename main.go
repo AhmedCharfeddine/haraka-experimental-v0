@@ -21,6 +21,7 @@ var rootCmd = &cobra.Command{
 	},
 }
 
+var paragraphMode bool
 var mappingCmd = &cobra.Command{
 	Use:     "mapping",
 	Aliases: []string{"map"},
@@ -29,11 +30,20 @@ var mappingCmd = &cobra.Command{
 		"Example:\n\t't' maps to 'ت'\n\t'tt' maps to 'ط'\n\t'7' maps to 'ح'",
 	Args: cobra.ExactArgs(1),
 	RunE: func(cmd *cobra.Command, args []string) error {
-		arabicWord, err := core.Transliterate(args[0], core.MappingStrategy)
-		if err != nil {
-			return err
+		input := args[0]
+		if paragraphMode {
+			paragraph, err := core.TransliterateParagraph(input, core.MappingStrategy)
+			if err != nil {
+				return err
+			}
+			fmt.Print(paragraph)
+		} else {
+			arabicWord, err := core.Transliterate(input, core.MappingStrategy)
+			if err != nil {
+				return err
+			}
+			fmt.Print(arabicWord)
 		}
-		fmt.Print(arabicWord)
 		return nil
 	},
 }
@@ -46,6 +56,7 @@ func Execute() {
 }
 
 func main() {
+	mappingCmd.Flags().BoolVarP(&paragraphMode, "paragraph", "p", false, "Transliterate a full paragraph")
 	rootCmd.AddCommand(mappingCmd)
 
 	Execute()
