@@ -1,4 +1,4 @@
-module github.com/AhmedCharfeddine/Haraka
+module github.com/AhmedCharfeddine/haraka
 
 go 1.24.1
 

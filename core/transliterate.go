@@ -5,7 +5,7 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/AhmedCharfeddine/Haraka/core/mapping"
+	"github.com/AhmedCharfeddine/haraka/core/mapping"
 )
 
 const MappingStrategy = "mapping"
