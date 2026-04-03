@@ -2,6 +2,10 @@
 
 Fast latin to arabic transliteration
 
+## Archived
+
+This repo started as an experimental project and is now archived for a newer iteration.
+
 ## Overview
 
 Haraka is a lightweight tool that lets you type in Arabic by turning your "mar7abaa" to a "مرحبا"
